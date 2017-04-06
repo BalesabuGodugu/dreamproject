@@ -59,13 +59,13 @@ var Range=React.createClass({
                     <svg width="10" height="10">
                         <circle cx="5" cy="5" r="5" fill={this.fill7}/>
                     </svg>
-                    <span className="padding-left-5">7 days</span>
+                    <span className="padding-left-5">3 months</span>
                 </span>
                 <span className="range-span">
                     <svg width="10" height="10">
                         <circle cx="5" cy="5" r="5" fill={this.fill30}/>
                     </svg>
-                    <span className="padding-left-5">30 days</span>
+                    <span className="padding-left-5">1 year</span>
                 </span>
             </div>
         );
@@ -211,12 +211,12 @@ var SubContainer=React.createClass({
     },
     reloadBarData:function(defaultValue){
         var dataBar=[
-            { month:'Jan', new:20, old:30 },
-            { month:'Feb', new:29, old:83 },
-            { month:'Mar', new:86, old:75 },
-            { month:'Apr', new:13, old:57 },
-            { month:'May', new:30, old:23 },
-            { month:'Jun', new:50, old:27 }
+            { month:'FLP', new:20, old:30 },
+            { month:'CASA', new:29, old:83 },
+            { month:'DIGI', new:86, old:75 },
+            { month:'NTB', new:13, old:57 },
+            { month:'UT', new:30, old:23 },
+            { month:'Others', new:50, old:27 }
 
         ];
 
@@ -235,18 +235,19 @@ var SubContainer=React.createClass({
     reloadPieData:function(defaultValue){
 
         var dataPie = [
-            { name: 'Maintenance' },
-            { name: 'New Development' },
-            { name: 'Support'},
-            { name: 'ISLA'},
-            { name: 'Others'}
+            { name: 'FLP',value:10 },
+            { name: 'CASA',value:18 },
+            { name: 'DIGI',value:20},
+            { name: 'NTB',value:15},
+            { name: 'Others',value:12}
 
         ];
 
         for(var i=0,j=4;i<5;++i,--j){
-
+    
             var d=dataPie[j];
-            d.count=Math.floor((Math.random() * 50) + 5);
+            d.count=dataPie[i].value;
+            console.log(d);
             dataPie[j]=d;
         }
 
@@ -267,7 +268,7 @@ var SubContainer=React.createClass({
             <div className="row">
                 <div className="col-md-6 custom_padding" >
                     <Panel>
-                        <PanelHeader title="Traffic Source">
+                        <PanelHeader title="Project wise Achievements">
                             <Range loadData={this.reloadBarData} defaultSelection={this.state.defaultBar}/>
                         </PanelHeader>
                         <div className="text-center">
@@ -282,7 +283,7 @@ var SubContainer=React.createClass({
                 </div>
                 <div className="col-md-6 custom_padding" >
                     <Panel>
-                        <PanelHeader title="Traffic Source">
+                        <PanelHeader title="Project wise Achievements">
                             <Range loadData={this.reloadPieData} defaultSelection={this.state.defaultBar}/>
                         </PanelHeader>
                         <div className="text-center padding-top-10">
